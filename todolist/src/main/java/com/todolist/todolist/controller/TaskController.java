@@ -62,9 +62,20 @@ public class TaskController {
 		
 		var taskExists = this.taksRepository.findById(id).orElse(null);
 		
+		
+		if(taskExists == null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		
+		var idUser = request.getAttribute("idUser");
+		
+		if(!taskExists.getIdUser().equals(idUser)) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		
+		
 		Utils.copyNullProperties(task, taskExists);
 
-		
 		var taskSave = this.taksRepository.save(taskExists);
 		return ResponseEntity.status(HttpStatus.CREATED).body(taskSave);
 	}
