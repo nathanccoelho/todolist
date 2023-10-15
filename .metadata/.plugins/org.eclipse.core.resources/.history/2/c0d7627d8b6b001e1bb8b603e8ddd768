@@ -1,0 +1,5 @@
+package com.todolist.todolist.filter;
+
+public class FilterTaskAuth {
+
+}
