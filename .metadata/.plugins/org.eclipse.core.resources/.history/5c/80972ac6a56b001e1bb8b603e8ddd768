@@ -1,5 +1,0 @@
-package com.todolist.todolist.erros;
-
-public class ExceptionHandlerController {
-
-}
